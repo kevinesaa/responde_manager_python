@@ -89,17 +89,17 @@ class ResponseModel:
             self.__headers = self.__addElement(self.__headers, KEY_STATUS_MESSAGE, statusMessage)
             return self
         
-        def setControlOrigin(self, controlOrigin:str) -> "ResponseModel.Builder":
+        def setControlOrigin(self, controlOrigin:str="*") -> "ResponseModel.Builder":
             KEY_CONTROL_ORIGIN = ResponseModel.Builder.__KEY_ACCESS_CONTROL_ORIGIN
             self.__headers = self.__addElement(self.__headers, KEY_CONTROL_ORIGIN, controlOrigin)
             return self
         
-        def setControlCredentials(self, controlCredential:bool) -> "ResponseModel.Builder":
+        def setControlCredentials(self, controlCredential:bool=True) -> "ResponseModel.Builder":
             KEY_CONTROL_CREDENTIALS = ResponseModel.Builder.__KEY_ACCESS_CONTROL_CREDENTIALS
             self.__headers = self.__addElement(self.__headers, KEY_CONTROL_CREDENTIALS, controlCredential)
             return self
         
-        def setControlHeaders(self, controlHeaders:str) -> "ResponseModel.Builder":
+        def setControlHeaders(self, controlHeaders:str="Content-Type") -> "ResponseModel.Builder":
             KEY_CONTROL_HEADERS = ResponseModel.Builder.__KEY_ACCESS_CONTROL_HEADERS
             self.__headers = self.__addElement(self.__headers, KEY_CONTROL_HEADERS, controlHeaders)
             return self
