@@ -1,6 +1,11 @@
 from .PageResponseModel import PageResponseModel
 
 class pageResponseWrapperDto:
+    """
+    Data object model.
+    Contains list items objects and Page info.
+    { "items": [], "page": {"totalItems": 30} }
+    """
 
     def __init__(self,items:list[object], page:PageResponseModel):
         
