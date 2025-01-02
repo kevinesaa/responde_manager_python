@@ -1,5 +1,9 @@
 
 class PageResponseModel:
+    """
+    Data model object Page. 
+    Include it as additional metadata to paginable response list items.
+    """
     
     __DEFAULT_PAGE_SIZE = 30
     
