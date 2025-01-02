@@ -3,6 +3,11 @@ from .StatusCodesBuilder import StatusCodesBuilder
 from .StatusCodeModel import StatusCodeModel
 
 class CommonStatusCodes(ABC):
+    """
+    It include the commons status to add over all the modules.
+    This class will grow up adding more status over the time.
+    To add specific module status, write a new class that inherit from this.
+    """
     
     __common_sync = False
     
