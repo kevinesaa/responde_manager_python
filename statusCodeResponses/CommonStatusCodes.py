@@ -31,11 +31,13 @@ class CommonStatusCodes(ABC):
 
     def __start(statusCodesBuilder:StatusCodesBuilder):
         if(not CommonStatusCodes.__common_sync):
-            CommonStatusCodes.OK = statusCodesBuilder.generateStatusModel(200,"OK",None)
+            CommonStatusCodes.OK = statusCodesBuilder.generateStatusModel(200,"OK","ok")
+            CommonStatusCodes.INTERNAL_SERVER_ERROR = statusCodesBuilder.generateStatusModel(500,"INTERNAL_SERVER_ERROR","ups! this should be not happening")
             CommonStatusCodes.UNKNOWN_ERROR = statusCodesBuilder.generateStatusModel(500,"UNKNOWN_ERROR","ups!")
-            CommonStatusCodes.BAD_FORMAT_EMAIL = statusCodesBuilder.generateStatusModel(400,"BAD_FORMAT_EMAIL","not valid email format")
+            
             CommonStatusCodes.__common_sync = True
     
+    # can be use in all my life
     OK:StatusCodeModel
-    BAD_FORMAT_EMAIL:StatusCodeModel
+    INTERNAL_SERVER_ERROR:StatusCodeModel
     UNKNOWN_ERROR:StatusCodeModel
