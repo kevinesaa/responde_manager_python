@@ -134,7 +134,7 @@ class ResponseModel:
 
         def __addElement(self, current:dict, key:str, value) -> dict:
         
-            newValue =  None
+            newValue:dict =  None
             if(current is not None):
                 newValue =  dict(current)
             
