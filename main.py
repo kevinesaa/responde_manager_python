@@ -9,6 +9,7 @@ if __name__ == "__main__":
     response = (
         ResponseModel.Builder()
             .setStatusCodeModel(ModuleStatusCodes.MODULE_STATUS)
+            .concatToAppStatusMessage(" main")
             .putAddionalHeader("token","12345")
             .setData({"id":"10","name":"murphy"})
             .build()

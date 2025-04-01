@@ -43,7 +43,7 @@ class ResponseModel:
 
     class Builder:
         
-        __KEY_STATUS_CODE = "app_status_code"
+        
         __KEY_STATUS_NAME = "app_status_name"
         __KEY_STATUS_MESSAGE = "app_status_message"
         __KEY_DATA = "data"
@@ -62,7 +62,6 @@ class ResponseModel:
          
         def setStatusCodeModel(self, model:StatusCodeModel) -> "ResponseModel.Builder":
             self.setHttpCode(model.getHttpCode())
-            self.setAppStatusCode(model.getStatusCodeNumber())
             self.setAppStatusName(model.getStatusCodeName())
             self.setAppStatusMessage(model.getStatusMessage())
             return self
@@ -77,16 +76,18 @@ class ResponseModel:
             self.__headers = self.__addElement(self.__headers, KEY_STATUS_NAME, statusName)
             return self
         
-        def setAppStatusCode(self, statusCode:str) -> "ResponseModel.Builder":
-            KEY_STATUS_CODE = ResponseModel.Builder.__KEY_STATUS_CODE
-            self.__body = self.__addElement(self.__body, KEY_STATUS_CODE, statusCode)
-            self.__headers = self.__addElement(self.__headers, KEY_STATUS_CODE, statusCode)
-            return self
-        
         def setAppStatusMessage(self, statusMessage:str) -> "ResponseModel.Builder":
             KEY_STATUS_MESSAGE = ResponseModel.Builder.__KEY_STATUS_MESSAGE
             self.__body = self.__addElement(self.__body, KEY_STATUS_MESSAGE, statusMessage)
             self.__headers = self.__addElement(self.__headers, KEY_STATUS_MESSAGE, statusMessage)
+            return self
+        
+        def concatToAppStatusMessage(self, text:str) -> "ResponseModel.Builder":
+            KEY_STATUS_MESSAGE = ResponseModel.Builder.__KEY_STATUS_MESSAGE
+            if (self.__body is None or self.__headers is None): 
+                self.setAppStatusMessage("")
+            current = self.__body.get(KEY_STATUS_MESSAGE,"")
+            self.setAppStatusMessage(f"{current}{text}")
             return self
         
         def setControlOrigin(self, controlOrigin:str="*") -> "ResponseModel.Builder":
